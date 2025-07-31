@@ -1,0 +1,9 @@
+{
+	"name": "adlsstorage",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "05154c4f-8160-4fec-895b-d3e2a6c510e3",
+		"tenantId": "f481cc27-f02a-4489-bc9f-16a2d091eb21"
+	}
+}
