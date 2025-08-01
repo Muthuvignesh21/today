@@ -69,10 +69,10 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Parameters_dataset",
+						"referenceName": "CSVconvert",
 						"type": "DatasetReference",
 						"parameters": {
-							"ds_project": {
+							"ds_filename": {
 								"value": "@pipeline().parameters.pp_project_folder",
 								"type": "Expression"
 							},
@@ -80,7 +80,7 @@
 								"value": "@pipeline().parameters.pp_output_folder",
 								"type": "Expression"
 							},
-							"ds_filename": {
+							"ds_project": {
 								"value": "@pipeline().parameters.pp_filename",
 								"type": "Expression"
 							}
