@@ -1,0 +1,85 @@
+{
+	"name": "Parameter_check",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Parameter_dataset2",
+						"type": "DatasetReference",
+						"parameters": {
+							"dd_folder": {
+								"value": "@pipeline().parameters.pp_project_folder",
+								"type": "Expression"
+							},
+							"dd_input": {
+								"value": "@pipeline().parameters.pp_input_folder",
+								"type": "Expression"
+							},
+							"dd_output": {
+								"value": "@pipeline().parameters.pp_output_folder",
+								"type": "Expression"
+							},
+							"dd_filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							},
+							"dd_archive": {
+								"value": "@pipeline().parameters.pp_archive",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"pp_project_folder": {
+				"type": "string",
+				"defaultValue": "adlsmuthu"
+			},
+			"pp_input_folder": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"pp_output_folder": {
+				"type": "string",
+				"defaultValue": "output"
+			},
+			"pp_filename": {
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
+			},
+			"pp_archive": {
+				"type": "string",
+				"defaultValue": "archive"
+			}
+		},
+		"annotations": []
+	}
+}
