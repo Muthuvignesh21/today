@@ -1,0 +1,38 @@
+{
+	"name": "Parameter_dataset2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dd_folder": {
+				"type": "string"
+			},
+			"dd_input": {
+				"type": "string"
+			},
+			"dd_output": {
+				"type": "string"
+			},
+			"dd_filename": {
+				"type": "string"
+			},
+			"dd_archive": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
