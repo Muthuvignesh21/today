@@ -26,7 +26,26 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
@@ -47,21 +66,41 @@
 							}
 						}
 					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parameters_dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_project": {
+								"value": "@pipeline().parameters.pp_project_folder",
+								"type": "Expression"
+							},
+							"ds_folder": {
+								"value": "@pipeline().parameters.pp_output_folder",
+								"type": "Expression"
+							}
+						}
+					}
 				]
 			}
 		],
 		"parameters": {
 			"pp_project_folder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "adlscontainer"
 			},
 			"pp_input_folder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "input"
 			},
 			"pp_output_folder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "output"
 			},
 			"pp_filename": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
 			}
 		},
 		"annotations": []
