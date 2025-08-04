@@ -56,6 +56,8 @@
 						{
 							"name": "Copy data1",
 							"type": "Copy",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -126,6 +128,39 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Parameter",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"pp_project_folder": "adlscontainer",
+									"pp_input_folder": "input",
+									"pp_output_folder": "output",
+									"pp_filename": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
+									"pp_archive_folder": "archive"
+								}
+							}
 						}
 					]
 				}
