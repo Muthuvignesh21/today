@@ -242,8 +242,7 @@
 				"defaultValue": "output"
 			},
 			"pp_filename": {
-				"type": "string",
-				"defaultValue": "SalesLTProduct.txt"
+				"type": "string"
 			},
 			"pp_archive_folder": {
 				"type": "string",
