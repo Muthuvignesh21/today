@@ -7,12 +7,10 @@
 		},
 		"parameters": {
 			"ds_project": {
-				"type": "string",
-				"defaultValue": "adlscontainer"
+				"type": "string"
 			},
 			"ds_folder": {
-				"type": "string",
-				"defaultValue": "input"
+				"type": "string"
 			},
 			"ds_filename": {
 				"type": "string"
