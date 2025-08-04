@@ -119,7 +119,10 @@
 									"parameters": {
 										"ds_project": "adlscontainer",
 										"ds_folder": "output",
-										"ds_filename": "filename"
+										"ds_filename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
 									}
 								}
 							]
