@@ -152,10 +152,14 @@
 								},
 								"waitOnCompletion": true,
 								"parameters": {
+									"pp_project_folder": "adlscontainer",
+									"pp_input_folder": "input",
+									"pp_output_folder": "output",
 									"pp_filename": {
 										"value": "@item().name",
 										"type": "Expression"
-									}
+									},
+									"pp_archive_folder": "archive"
 								}
 							}
 						}
