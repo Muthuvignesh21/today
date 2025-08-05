@@ -39,14 +39,9 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -164,6 +159,29 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@startswith(item().name,'Sales')",
+						"type": "Expression"
+					}
 				}
 			}
 		],
