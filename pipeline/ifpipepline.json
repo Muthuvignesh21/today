@@ -168,7 +168,7 @@
 								},
 								"cases": [
 									{
-										"value": "Case1",
+										"value": "csv",
 										"activities": [
 											{
 												"name": "Copy data1_copy1_copy1",
