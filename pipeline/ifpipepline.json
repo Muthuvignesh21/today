@@ -229,7 +229,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"ds_project": "adlsmuthu",
-													"ds_folder": "ifcontion",
+													"ds_folder": "CSV",
 													"ds_filename": {
 														"value": "@item().name",
 														"type": "Expression"
