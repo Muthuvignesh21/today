@@ -131,7 +131,10 @@
 												"parameters": {
 													"ds_project": "adlsmuthu",
 													"ds_folder": "ifcontion output",
-													"ds_filename": "output"
+													"ds_filename": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
 												}
 											}
 										]
