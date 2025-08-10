@@ -162,18 +162,10 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"on": {
-									"value": "@pipeline().parameters.pp_filetype",
-									"type": "Expression"
-								},
-								"cases": [
-									{
-										"value": "Case1"
-									}
-								],
+								"cases": [],
 								"defaultActivities": [
 									{
-										"name": "Copy data2",
+										"name": "Copy data1_copy1",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
@@ -185,8 +177,66 @@
 										},
 										"userProperties": [],
 										"typeProperties": {
-											"enableStaging": false
-										}
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "Parameters_dataset",
+												"type": "DatasetReference",
+												"parameters": {
+													"ds_project": "adlscontainer",
+													"ds_folder": "input",
+													"ds_filename": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "Parameters_dataset",
+												"type": "DatasetReference",
+												"parameters": {
+													"ds_project": "adlsmuthu",
+													"ds_folder": "ifcontion",
+													"ds_filename": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
+												}
+											}
+										]
 									}
 								]
 							}
