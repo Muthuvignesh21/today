@@ -163,7 +163,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"on": {
-									"value": "@pipeline().parameters.pp_filetype",
+									"value": "@last(split(item().name,'.'))",
 									"type": "Expression"
 								},
 								"cases": [
