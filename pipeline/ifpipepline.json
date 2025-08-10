@@ -162,6 +162,10 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
+								"on": {
+									"value": "@pipeline().parameters.pp_filetype",
+									"type": "Expression"
+								},
 								"cases": [],
 								"defaultActivities": [
 									{
