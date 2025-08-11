@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "dataflowoutput",
-				"folderPath": "output",
+				"folderPath": "dsoutput",
 				"fileSystem": "adlscontainer"
 			},
 			"columnDelimiter": ",",
