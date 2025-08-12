@@ -9,10 +9,10 @@
 			"ds_project": {
 				"type": "string"
 			},
-			"ds_filename": {
+			"ds_foldername": {
 				"type": "string"
 			},
-			"ds_foldername": {
+			"ds_filename": {
 				"type": "string"
 			}
 		},
