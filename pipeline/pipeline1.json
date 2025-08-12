@@ -117,13 +117,16 @@
 		],
 		"parameters": {
 			"pp_project": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "pocproject"
 			},
 			"pp_folder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "source"
 			},
 			"pp_filename": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "AdventureWorksLT2012.zip"
 			},
 			"pp_sink": {
 				"type": "string"
