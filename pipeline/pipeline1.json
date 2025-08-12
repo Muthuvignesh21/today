@@ -71,7 +71,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "pocgetmeta",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@activity('Copy data1').output",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems",
