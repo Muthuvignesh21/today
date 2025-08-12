@@ -71,13 +71,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "pocgetmeta",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@activity('Copy data1').output",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems",
@@ -174,7 +168,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "pocgetmeta",
+														"referenceName": "getdata2",
 														"type": "DatasetReference"
 													}
 												],
@@ -237,8 +231,11 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "pocgetmeta",
-														"type": "DatasetReference"
+														"referenceName": "getdata2",
+														"type": "DatasetReference",
+														"parameters": {
+															"filename": "@item().name"
+														}
 													}
 												],
 												"outputs": [
@@ -300,14 +297,21 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "pocgetmeta",
-														"type": "DatasetReference"
+														"referenceName": "getdata2",
+														"type": "DatasetReference",
+														"parameters": {
+															"filename": "@item().name"
+														}
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "pocseparation",
-														"type": "DatasetReference"
+														"type": "DatasetReference",
+														"parameters": {
+															"file_name": "@item().name",
+															"file_type": "@last(spilt(item().name,'.'))"
+														}
 													}
 												]
 											}
