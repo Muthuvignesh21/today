@@ -317,7 +317,10 @@
 														"type": "DatasetReference",
 														"parameters": {
 															"file_type": "@item().name",
-															"file_name": "@last(spilt(item().name,'.'))"
+															"file_name": {
+																"value": "@last(split(item().name,'.'))",
+																"type": "Expression"
+															}
 														}
 													}
 												]
