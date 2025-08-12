@@ -9,6 +9,10 @@
 			"file_name": {
 				"type": "string",
 				"defaultValue": "@item().name"
+			},
+			"file_type": {
+				"type": "string",
+				"defaultValue": "@last(spilt(item().name,'.'))"
 			}
 		},
 		"annotations": [],
@@ -16,7 +20,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().file_type",
+					"type": "Expression"
+				},
 				"fileSystem": "pocproject"
 			},
 			"columnDelimiter": ",",
