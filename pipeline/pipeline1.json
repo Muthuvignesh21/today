@@ -52,9 +52,14 @@
 			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -65,10 +70,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "pocsource",
+						"referenceName": "pocsink",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
+						"childItems",
 						"exists",
 						"itemName",
 						"itemType",
@@ -88,7 +94,14 @@
 				"type": "ForEach",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"activities": [
