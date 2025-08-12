@@ -175,7 +175,14 @@
 												"outputs": [
 													{
 														"referenceName": "pocseparation",
-														"type": "DatasetReference"
+														"type": "DatasetReference",
+														"parameters": {
+															"file_type": "@last(split(item().name,'.'))",
+															"file_name": {
+																"value": "@item().name",
+																"type": "Expression"
+															}
+														}
 													}
 												]
 											}
@@ -309,8 +316,8 @@
 														"referenceName": "pocseparation",
 														"type": "DatasetReference",
 														"parameters": {
-															"file_name": "@item().name",
-															"file_type": "@last(spilt(item().name,'.'))"
+															"file_type": "@item().name",
+															"file_name": "@last(spilt(item().name,'.'))"
 														}
 													}
 												]
