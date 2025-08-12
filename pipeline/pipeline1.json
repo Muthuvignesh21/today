@@ -87,12 +87,12 @@
 								"value": "@pipeline().parameters.pp_project",
 								"type": "Expression"
 							},
-							"ds_filename": {
-								"value": "@pipeline().parameters.pp_filename",
-								"type": "Expression"
-							},
 							"ds_foldername": {
 								"value": "@pipeline().parameters.pp_folder",
+								"type": "Expression"
+							},
+							"ds_filename": {
+								"value": "@pipeline().parameters.pp_filename",
 								"type": "Expression"
 							}
 						}
