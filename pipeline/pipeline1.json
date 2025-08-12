@@ -5,8 +5,6 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -31,14 +29,9 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false
@@ -51,24 +44,16 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText2",
-						"type": "DatasetReference",
-						"parameters": {
-							"ds_folder": {
-								"value": "@pipeline().parameters.pp_sink",
-								"type": "Expression"
-							},
-							"ds_project": {
-								"value": "@pipeline().parameters.pp_project",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "pocsink",
+						"type": "DatasetReference"
 					}
 				]
 			},
 			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -84,7 +69,6 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"contentMD5",
 						"exists",
 						"itemName",
 						"itemType",
@@ -105,7 +89,34 @@
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Switch1",
+							"type": "Switch",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"on": {
+									"value": "@last(split(item().name,'.'))",
+									"type": "Expression"
+								},
+								"cases": [
+									{
+										"value": "csv"
+									},
+									{
+										"value": "json"
+									},
+									{
+										"value": "txt"
+									}
+								]
+							}
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
