@@ -12,7 +12,7 @@
 			},
 			"file_type": {
 				"type": "string",
-				"defaultValue": "@last(spilt(item().name,'.'))"
+				"defaultValue": "@last(split(item().name,'.'))"
 			}
 		},
 		"annotations": [],
