@@ -5,6 +5,8 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -16,14 +18,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
+							"recursive": true
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "BinaryReadSettings",
+							"compressionProperties": {
+								"type": "ZipDeflateReadSettings"
+							}
 						}
 					},
 					"sink": {
@@ -37,30 +41,94 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "pocsource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DelimitedText2",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_folder": {
+								"value": "@pipeline().parameters.pp_sink",
+								"type": "Expression"
+							},
+							"ds_project": {
+								"value": "@pipeline().parameters.pp_project",
+								"type": "Expression"
+							}
+						}
 					}
 				]
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "pocsource",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_project": {
+								"value": "@pipeline().parameters.pp_project",
+								"type": "Expression"
+							},
+							"ds_filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							},
+							"ds_foldername": {
+								"value": "@pipeline().parameters.pp_folder",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"childItems",
+						"contentMD5",
+						"exists",
+						"itemName",
+						"itemType",
+						"lastModified"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				}
 			}
 		],
+		"parameters": {
+			"pp_project": {
+				"type": "string"
+			},
+			"pp_folder": {
+				"type": "string"
+			},
+			"pp_filename": {
+				"type": "string"
+			},
+			"pp_sink": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
