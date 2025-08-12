@@ -70,7 +70,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "pocsink",
+						"referenceName": "pocgetmeta",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -85,7 +85,7 @@
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
-						"type": "BinaryReadSettings"
+						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
