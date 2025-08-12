@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing/txt",
+				"folderPath": "landing",
 				"fileSystem": "pocproject"
 			},
 			"columnDelimiter": ",",
