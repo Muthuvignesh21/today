@@ -10,9 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "employee_data_100_records.csv",
-				"folderPath": "input",
-				"fileSystem": "adlscontainer"
+				"fileName": "AdventureWorksLT2012.zip",
+				"folderPath": "source",
+				"fileSystem": "pocproject"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
