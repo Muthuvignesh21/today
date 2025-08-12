@@ -81,24 +81,9 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "pocsource",
-						"type": "DatasetReference",
-						"parameters": {
-							"ds_project": {
-								"value": "@pipeline().parameters.pp_project",
-								"type": "Expression"
-							},
-							"ds_foldername": {
-								"value": "@pipeline().parameters.pp_folder",
-								"type": "Expression"
-							},
-							"ds_filename": {
-								"value": "@pipeline().parameters.pp_filename",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems",
 						"contentMD5",
 						"exists",
 						"itemName",
@@ -113,25 +98,16 @@
 						"type": "BinaryReadSettings"
 					}
 				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
-		"parameters": {
-			"pp_project": {
-				"type": "string",
-				"defaultValue": "pocproject"
-			},
-			"pp_folder": {
-				"type": "string",
-				"defaultValue": "source"
-			},
-			"pp_filename": {
-				"type": "string",
-				"defaultValue": "AdventureWorksLT2012.zip"
-			},
-			"pp_sink": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
