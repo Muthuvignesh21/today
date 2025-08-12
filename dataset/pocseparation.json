@@ -6,13 +6,13 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"file_name": {
-				"type": "string",
-				"defaultValue": "@item().name"
-			},
 			"file_type": {
 				"type": "string",
 				"defaultValue": "@last(split(item().name,'.'))"
+			},
+			"file_name": {
+				"type": "string",
+				"defaultValue": "@item().name"
 			}
 		},
 		"annotations": [],
