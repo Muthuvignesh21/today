@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "landing/AdventureWorksLT2012.zip/AdventureWorksLT2012",
+				"folderPath": "landing/adventureworks.zip",
 				"fileSystem": "pocproject"
 			},
 			"columnDelimiter": ",",
